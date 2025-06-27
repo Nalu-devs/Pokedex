@@ -31,21 +31,22 @@
                     <div class="circuloGreen"></div>
                 </div>
                 <div id="tela" class="tela">
-                    <div id="nome" class="nome" type="text" disabled></div>
+                    <div class="erro" id="erro"></div>
+                    <div id="nome" class="nome" type="text"></div>
                     <div class="imagens">
                         <img id="img" class="imagemPokemon">
                         <audio id="audio"></audio>
                     </div>
-                    <div id="tipo1" class="tipoPokemon1" type="text" disabled></div>
-                    <div id="tipo2" class="tipoPokemon2" type="text" disabled></div>
-                    <div id="altura" class="alturaPokemon" type="text" disabled></div>
-                    <div id="peso" class="pesoPokemon" type="text" disabled></div>
+                    <div id="tipo1" class="tipoPokemon1" type="text"></div>
+                    <div id="tipo2" class="tipoPokemon2" type="text"></div>
+                    <div id="altura" class="alturaPokemon" type="text"></div>
+                    <div id="peso" class="pesoPokemon" type="text"></div>
                     <div id="propriedades" class="propriedades">
-                        <div id="numeroPokemon" class="numeroPokemon" type="text" disabled></div>
-                        <div id="ataque" class="ataquePokemon" type="text" disabled></div>
-                        <div id="defesa" class="defesaPokemon" type="text" disabled></div>
-                        <div id="velocidade" class="velocidadePokemon" type="text" disabled></div>
-                        <div id="ataqueEspecial" class="ataqueEspecialPokemon" type="text" disabled></div>
+                        <div id="numeroPokemon" class="numeroPokemon" type="text"></div>
+                        <div id="ataque" class="ataquePokemon" type="text"></div>
+                        <div id="defesa" class="defesaPokemon" type="text"></div>
+                        <div id="velocidade" class="velocidadePokemon" type="text"></div>
+                        <div id="ataqueEspecial" class="ataqueEspecialPokemon" type="text"></div>
                     </div>
                 </div>
 
@@ -72,6 +73,7 @@
                 <img src="imagens/ash.webp" alt="Ash pokemon">
             </div>
         </div>
+
     </main>
 
     <script>
@@ -90,6 +92,7 @@
         var propriedades = document.getElementById("propriedades")
         var tela = document.getElementById("tela")
         var audio = document.getElementById("audio")
+        var erro = document.getElementById("erro")
 
         var ir = document.getElementById("ir")
         var voltar = document.getElementById("voltar")
@@ -109,6 +112,7 @@
                     return response.json();//retorna a funcao
                 })
                 .then((dados) => {
+
                     numeroInicial = dados.id
                     tipo1.innerHTML = "Tipo: " + dados.types[0].type.name//como tipos é um vetor precisamos declarar qual indice queremos
                     tipo2.innerHTML = "Tipo 2: " + (dados.types[1] ? dados.types[1].type.name : "Não possui")
@@ -126,6 +130,8 @@
                     ataqueEspecial.innerHTML = "Especial: " + dados.moves[0].move.name
                     audio.src = dados.cries.latest
                     audio.play()
+                    erro.innerHTML = ""
+
 
                     if (propriedades.style.border = "none") {
                         propriedades.style.border = "1px solid"
@@ -146,7 +152,7 @@
                 .catch(error => {//caso der erro (pokemon não encontrado etc)
                     tipo1.innerHTML = ""
                     tipo2.innerHTML = ""
-                    nome.innerHTML = "Não encontrado!"
+                    nome.innerHTML = ""
                     numeroPokemon.innerHTML = ""
                     img.src = ""
                     img.style.height = ""
@@ -157,6 +163,12 @@
                     defesa.innerHTML = ""
                     velocidade.innerHTML = ""
                     ataqueEspecial.innerHTML = ""
+                    erro.innerHTML = "Pokémon não encontrado!"
+                    erro.style.display = "block"
+                    propriedades.style.border = "none"
+                    pokemon.value = ""
+                    icon.src = ""
+
                 })
         }
         numero.addEventListener("click", gerarPokemon)//quando o botao for clicado
@@ -178,11 +190,16 @@
                     return response.json();//retorna a funcao
                 })
                 .then((dados) => {
+                    if(numeroInicial>1025){
+                        return false
+                    }
+
+                    else{
                     pokemon.value = numeroInicial
                     tipo1.innerHTML = "Tipo: " + dados.types[0].type.name//como tipos é um vetor precisamos declarar qual indice queremos
                     tipo2.innerHTML = "Tipo 2: " + (dados.types[1] ? dados.types[1].type.name : "Não possui")
                     nome.innerHTML = dados.name
-                    numeroPokemon.innerHTML = "Nº: " + dados.id 
+                    numeroPokemon.innerHTML = "Nº: " + dados.id
                     img.src = dados.sprites.other.dream_world.front_default ? dados.sprites.other.dream_world.front_default : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + dados.id + ".png"
                     img.style.height = "141px"
                     img.style.width = "153px"
@@ -195,6 +212,9 @@
                     ataqueEspecial.innerHTML = "Especial: " + dados.moves[0].move.name
                     audio.src = dados.cries.latest
                     audio.play()
+                    erro.innerHTML = ""
+                    }
+
 
                     if (propriedades.style.border = "none") {
                         propriedades.style.border = "1px solid"
@@ -215,7 +235,7 @@
                 .catch(error => {//caso der erro (pokemon não encontrado etc)
                     tipo1.innerHTML = ""
                     tipo2.innerHTML = ""
-                    nome.innerHTML = "Não encontrado!"
+                    nome.innerHTML = ""
                     numeroPokemon.innerHTML = ""
                     img.src = ""
                     img.style.height = ""
@@ -226,6 +246,12 @@
                     defesa.innerHTML = ""
                     velocidade.innerHTML = ""
                     ataqueEspecial.innerHTML = ""
+                    propriedades.style.border = "none"
+                    erro.innerHTML = "Pokémon não encontrado!"
+                    erro.style.display = "block"
+                    propriedades.style.border = "none"
+                    pokemon.value = ""
+                    icon.src = ""
                 })
         }
 
@@ -236,10 +262,16 @@
                 .then(response => {
                     if (!response.ok) { //analisa se o nome e id existem
                         throw new Error('Pokémon não encontrado!');//caso n exista
+                       
                     }
                     return response.json();//retorna a funcao
                 })
                 .then((dados) => {
+                    if(numeroInicial<0){
+                        return false
+                    }
+
+                    else{
                     pokemon.value = numeroInicial
                     tipo1.innerHTML = "Tipo: " + dados.types[0].type.name//como tipos é um vetor precisamos declarar qual indice queremos
                     tipo2.innerHTML = "Tipo 2: " + (dados.types[1] ? dados.types[1].type.name : "Não possui")
@@ -257,6 +289,8 @@
                     ataqueEspecial.innerHTML = "Especial: " + dados.moves[0].move.name
                     audio.src = dados.cries.latest
                     audio.play()
+                    erro.innerHTML = ""
+                    }
 
                     if (propriedades.style.border = "none") {
                         propriedades.style.border = "1px solid"
@@ -268,7 +302,7 @@
                 .catch(error => {//caso der erro (pokemon não encontrado etc)
                     tipo1.innerHTML = ""
                     tipo2.innerHTML = ""
-                    nome.innerHTML = "Não encontrado!"
+                    nome.innerHTML = ""
                     numeroPokemon.innerHTML = ""
                     img.src = ""
                     img.style.height = ""
@@ -279,6 +313,11 @@
                     defesa.innerHTML = ""
                     velocidade.innerHTML = ""
                     ataqueEspecial.innerHTML = ""
+                    erro.innerHTML = "Pokémon não encontrado!"
+                    erro.style.display = "block"
+                    propriedades.style.border = "none"
+                    pokemon.value = ""
+                    icon.src = ""
                 })
 
         }

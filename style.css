@@ -5,7 +5,7 @@ html {
     height: 100%;
     justify-content: center;
     align-items: center;
-    background-color: #e5c1b8;
+    background-color: #000000;
 }
 
 .carcaca {
@@ -260,6 +260,15 @@ html {
     transform: translateX(-50%);
     width: 38%;
     height: 15%;
+}
+
+.erro{
+    top: 20%;
+    font-size: 20px;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    display: none;
 }
 
 .propriedades {

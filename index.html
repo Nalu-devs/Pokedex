@@ -100,7 +100,7 @@
         var pokemon = document.getElementById("pokemon")
         var numero = document.getElementById("numero")
 
-        var numeroInicial = 1
+        var numeroInicial = 0
 
         function gerarPokemon() {
             var url = "https://pokeapi.co/api/v2/pokemon/" + pokemon.value
@@ -190,6 +190,7 @@
                     return response.json();//retorna a funcao
                 })
                 .then((dados) => {
+                    
                     if(numeroInicial>1025){
                         return false
                     }

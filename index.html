@@ -190,10 +190,10 @@
                     return response.json();//retorna a funcao
                 })
                 .then((dados) => {
-                    
+
                     if(numeroInicial>1025){
                         return false
-                    }
+                    } //PRECISO ARRUMAR AQUI
 
                     else{
                     pokemon.value = numeroInicial
@@ -270,7 +270,7 @@
                 .then((dados) => {
                     if(numeroInicial<0){
                         return false
-                    }
+                    }//PRECISO ARRUMAR AQUI
 
                     else{
                     pokemon.value = numeroInicial

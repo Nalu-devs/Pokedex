@@ -1,4 +1,4 @@
-var nome = document.getElementById(("nome"))
+var nome = document.getElementById("nome")
 var numeroPokemon = document.getElementById("numeroPokemon")
 var img = document.getElementById("img")
 var tipo1 = document.getElementById("tipo1")
@@ -61,14 +61,6 @@ function gerarPokemon() {
                 propriedades.style.border = "none"
             }
 
-            // if (tela.style.height = "50%") {
-            //     tela.style.height = "57%"
-            //     tela.style.top = "1%"
-            // }
-            // else {
-            //     tela.style.height = "60%"
-            //     tela.style.top = ""
-            // } iria expandir a tela, mas desisti
         })
         .catch(error => {//caso der erro (pokemon não encontrado etc)
             tipo1.innerHTML = ""

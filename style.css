@@ -1,4 +1,4 @@
-body, 
+body,
 html {
     margin: 0;
     padding: 0;
@@ -6,11 +6,13 @@ html {
     justify-content: center;
     align-items: center;
     background-color: #000000;
+    overflow: hidden;
 }
 
 .carcaca {
     width: 50%;
-    height: 98vh;
+    height: 90vh;
+    max-height: 100%;
     max-width: 100%;
     border-radius: 20px 0px 0px 20px;
     padding: 10px;
@@ -42,7 +44,8 @@ html {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center; /*para centralizar verticalmente*/
+    align-items: center;
+    /*para centralizar verticalmente*/
     padding-right: 0px;
 }
 
@@ -256,7 +259,7 @@ html {
     height: 15%;
 }
 
-.erro{
+.erro {
     top: 20%;
     font-size: 20px;
     width: 100%;
@@ -351,9 +354,10 @@ html {
     width: 70%;
     max-width: 100%;
     border: 2px solid #1b2e29;
-    box-shadow: inset 4px 0 3px #665c5a, inset -4px 0 3px #665c5a, inset 0 -4px 4px #665c5a;
+    box-shadow: inset 4px 0 2px #665c5a, inset -4px 0 2px #665c5a, inset 0 -4px 2px #665c5a;
     display: flex;
-    flex-direction: column; /* Organiza os itens em coluna (um abaixo do outro) */
+    flex-direction: column;
+    /* Organiza os itens em coluna (um abaixo do outro) */
     justify-content: center;
     align-items: center;
     border-radius: 20px 20px 20px 0px;
@@ -388,10 +392,18 @@ button {
     height: 30%;
     width: 90%;
     max-width: 100%;
-    background-color: hsl(197, 100%, 50%);
+    background-color: #066b2d;
     font-family: "Press Start 2P", system-ui;
     font-size: 13px;
-    box-shadow: 4px 4px 8px black;
+    box-shadow: 4px 4px 4px black;
+    transition: 0.79s ease-in-out;
+    color: white;
+}
+
+button:hover {
+    border-radius: 10px;
+    background-color: #04471e;
+    color: white;
 }
 
 .misty img {
@@ -414,5 +426,5 @@ button {
     padding: 0;
     justify-content: center;
     align-items: flex-end;
-    margin-top: 2%;
+    margin-top: 1%;
 }

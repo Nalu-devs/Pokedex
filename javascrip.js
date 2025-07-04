@@ -23,6 +23,10 @@ var numero = document.getElementById("numero")
 
 var numeroInicial = 0
 
+function letraMaiuscula(str){
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+}
+
 function gerarPokemon() {
     var url = "https://pokeapi.co/api/v2/pokemon/" + pokemon.value
     fetch(url)
@@ -37,7 +41,7 @@ function gerarPokemon() {
             numeroInicial = dados.id
             tipo1.innerHTML = "Tipo: " + dados.types[0].type.name//como tipos é um vetor precisamos declarar qual indice queremos
             tipo2.innerHTML = "Tipo 2: " + (dados.types[1] ? dados.types[1].type.name : "Não possui")
-            nome.innerHTML = dados.name
+            nome.innerHTML = (letraMaiuscula(dados.name))
             numeroPokemon.innerHTML = "Nº: " + dados.id
             img.src = dados.sprites.other.dream_world.front_default ? dados.sprites.other.dream_world.front_default : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + dados.id + ".png"
             img.style.height = "141px"
@@ -112,7 +116,7 @@ function mudarPokemonFrente() {
                 pokemon.value = numeroInicial
                 tipo1.innerHTML = "Tipo: " + dados.types[0].type.name//como tipos é um vetor precisamos declarar qual indice queremos
                 tipo2.innerHTML = "Tipo 2: " + (dados.types[1] ? dados.types[1].type.name : "Não possui")
-                nome.innerHTML = dados.name
+                nome.innerHTML = (letraMaiuscula(dados.name))
                 numeroPokemon.innerHTML = "Nº: " + dados.id
                 img.src = dados.sprites.other.dream_world.front_default ? dados.sprites.other.dream_world.front_default : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + dados.id + ".png"
                 img.style.height = "141px"
@@ -189,7 +193,7 @@ function mudarPokemonTras() {
                 pokemon.value = numeroInicial
                 tipo1.innerHTML = "Tipo: " + dados.types[0].type.name//como tipos é um vetor precisamos declarar qual indice queremos
                 tipo2.innerHTML = "Tipo 2: " + (dados.types[1] ? dados.types[1].type.name : "Não possui")
-                nome.innerHTML = dados.name
+                nome.innerHTML = (letraMaiuscula(dados.name))
                 numeroPokemon.innerHTML = "Nº: " + dados.id
                 img.src = dados.sprites.other.dream_world.front_default ? dados.sprites.other.dream_world.front_default : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + dados.id + ".png"
                 img.style.height = "141px"

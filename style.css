@@ -5,7 +5,7 @@ html {
     height: 100%;
     justify-content: center;
     align-items: center;
-    background-color: #000000;
+    background-color: #000d31;
     overflow: hidden;
 }
 
@@ -26,43 +26,102 @@ html {
 
 .carcacaBotaoControle {
     position: absolute;
-    right: 0;
-    bottom: 5%;
-    width: 30%;
-    height: 10%;
+    right: 3%;
+    bottom: 1.6%;
+    width: 25%;
+    height: 15%;
 }
 
 .carcacaBotaoControle .direita {
     position: absolute;
     background-color: #1b1b1b;
-    border-radius: 8px;
-    color: white;
-    width: 50%;
+    border-radius: 0px 8px 8px 0;
+    color: rgb(49, 49, 49);
+    width: 29%;
+    font-size: 20px;
     height: 30px;
-    top: 30%;
-    right: 0;
+    top: 34%;
+    right: 6%;
     display: flex;
+    padding-left: 8%;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    /*para centralizar verticalmente*/
-    padding-right: 0px;
+    font-family: "Press Start 2P", system-ui;
+    border: none;
+    padding-bottom: 5px;
+    box-shadow: 0px 3px 0px #0a0a0a;
+
+}
+
+/* div {
+    border: 1px solid rgb(0, 0, 255);
+}     */
+
+.botaoCirculo {
+    height: 15px;
+    width: 15px;
+    margin-top: 20%;
+    margin-left: 23%;
+    border-radius: 50%;
+    background-color: #1b1b1b;
+    border: 1px solid rgb(49, 49, 49);
+}
+
+.meio {
+    background-color: #1b1b1b;
+    width: 30%;
+    height: 100%;
+    margin-left: 36%;
+    text-align: left;
+    border-radius: 8px;
+    color: rgb(49, 49, 49);
+    box-shadow: -4px 4px 0px black;
+}
+
+.cimaImg {
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+    margin-left: 5%;
+}
+
+.baixo {
+    margin-top: 1%;
+    border: none;
+    width: 100%;
+    height: 6%;
+    background-color: #1b1b1b;
+    font-size: 20px;
+    color: rgb(49, 49, 49);
+    border-radius: 8px;
+}
+
+.cima {
+    border-radius: 8px;
+    border: none;
+    background-color: #1b1b1b;
+    color: rgb(49, 49, 49);
+    /* border: 1px solid rgb(30, 255, 0); */
 }
 
 .carcacaBotaoControle .esquerda {
     position: absolute;
-    color: white;
+    color: rgb(49, 49, 49);
     background-color: #1b1b1b;
     border-radius: 8px;
-    width: 50%;
+    width: 36%;
     height: 30px;
-    top: 30%;
-    left: 0;
+    top: 34%;
+    left: 5%;
+    padding-bottom: 5px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    text-align: center;
     align-items: center;
-    padding-right: 10px;
+    font-family: "Press Start 2P", system-ui;
+    border: none;
+    font-size: 20px;
+    box-shadow: -4px 4px 0px #0a0a0a;
 }
 
 .carcacaBotao {
@@ -387,7 +446,7 @@ html {
     padding-left: 5%;
 }
 
-button {
+.buscaPokemon {
     display: block;
     height: 30%;
     width: 90%;
@@ -400,7 +459,7 @@ button {
     color: white;
 }
 
-button:hover {
+.buscaPokemon:hover {
     border-radius: 10px;
     background-color: #04471e;
     color: white;

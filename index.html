@@ -21,22 +21,16 @@
                 <img src="imagens/misty.webp" alt="Misty pokemon">
             </div>
             <div class="carcaca">
-                <div class="circulosGrandes">
-                    <div class="circulo1"></div>
-                    <div class="circulo2"></div>
-                </div>
-                <div class="circuloColorido">
-                    <div class="circuloRed"></div>
-                    <div class="circuloYellow"></div>
-                    <div class="circuloGreen"></div>
-                </div>
+                <div class="circulo1"></div>
+                <div class="circulo2"></div>
+                <div class="circuloRed"></div>
+                <div class="circuloYellow"></div>
+                <div class="circuloGreen"></div>
                 <div id="tela" class="tela">
                     <div class="erro" id="erro"></div>
                     <div id="nome" class="nome" type="text"></div>
-                    <div class="imagens">
-                        <img id="img" class="imagemPokemon">
-                        <audio id="audio"></audio>
-                    </div>
+                    <img id="img" class="imagemPokemon">
+                    <audio id="audio"></audio>
                     <div id="tipo1" class="tipoPokemon1" type="text"></div>
                     <div id="tipo2" class="tipoPokemon2" type="text"></div>
                     <div id="altura" class="alturaPokemon" type="text"></div>
@@ -51,8 +45,14 @@
                 </div>
 
                 <div class="carcacaBotaoControle">
-                    <button id="voltar" class="esquerda" onclick="mudarPokemonTras()">&#60;</button>
-                    <button id="ir" class="direita" onclick="mudarPokemonFrente()">&#62;</button>
+                    <button id="voltar" class="esquerda" onclick="mudarPokemonTras()">&#9204;</button>
+                    <button id="ir" class="direita" onclick="mudarPokemonFrente()">&#9205;</button>
+                    
+                    <div class="meio">
+                        <button id="irCima" class="cima" onclick="mudarPokemonFrente()"><div class="cimaImg">&#9206;</div></button>
+                        <div class="botaoCirculo"></div>
+                        <button id="voltarBaixo" class="baixo" onclick="mudarPokemonTras()">&#9207;</button>
+                    </div>
                 </div>
 
                 <div class="telaVerde">
@@ -66,7 +66,7 @@
             <div class="carcacaBotao">
                 <div class="botoes">
                     <input id="pokemon" placeholder="Nº OU NOME DO POKÉMON"><br>
-                    <button id="numero"> Buscar Pokémon! </button> <br>
+                    <button id="numero" class="buscaPokemon"> Buscar Pokémon! </button> <br>
                 </div>
             </div>
             <div class="ash">

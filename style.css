@@ -15,7 +15,7 @@ html {
     max-height: 100%;
     max-width: 100%;
     border-radius: 20px 0px 0px 20px;
-    padding: 10px;
+    padding: 5px;
     background-color: #f93333;
     position: relative;
     display: flex;
@@ -128,9 +128,7 @@ html {
     width: 43%;
     height: 80vh;
     max-width: 100%;
-    border-left: 3px solid #941515;
-    border-bottom: 3px solid #941515;
-    border-right: 3px solid #941515;
+    border: 3px solid #941515;
     background-color: #f93333;
     border-radius: 0px 20px 20px 0px;
     display: flex;
@@ -466,7 +464,7 @@ html {
 }
 
 .misty img {
-    margin-left: 30%;
+    margin-left: 10%;
     width: 50%;
     max-width: 100%;
     height: auto;

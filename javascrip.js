@@ -52,7 +52,7 @@ function gerarPokemon() {
             ataque.innerHTML = "Ataque: " + dados.stats[1].base_stat
             defesa.innerHTML = "Defesa: " + dados.stats[2].base_stat
             velocidade.innerHTML = "Velocidade: " + dados.stats[5].base_stat
-            ataqueEspecial.innerHTML = "Especial: " + dados.moves[0].move.name
+            ataqueEspecial.innerHTML = "Especial: " + letraMaiuscula(dados.moves[0].move.name)
             audio.src = dados.cries.latest
             audio.play()
             erro.innerHTML = ""
@@ -127,7 +127,7 @@ function mudarPokemonFrente() {
                 ataque.innerHTML = "Ataque: " + dados.stats[1].base_stat
                 defesa.innerHTML = "Defesa: " + dados.stats[2].base_stat
                 velocidade.innerHTML = "Velocidade: " + dados.stats[5].base_stat
-                ataqueEspecial.innerHTML = "Especial: " + dados.moves[0].move.name
+                ataqueEspecial.innerHTML = "Especial: " + letraMaiuscula(dados.moves[0].move.name)
                 audio.src = dados.cries.latest
                 audio.play()
                 erro.innerHTML = ""
@@ -204,7 +204,7 @@ function mudarPokemonTras() {
                 ataque.innerHTML = "Ataque: " + dados.stats[1].base_stat
                 defesa.innerHTML = "Defesa: " + dados.stats[2].base_stat
                 velocidade.innerHTML = "Velocidade: " + dados.stats[5].base_stat
-                ataqueEspecial.innerHTML = "Especial: " + dados.moves[0].move.name
+                ataqueEspecial.innerHTML = "Especial: " + letraMaiuscula(dados.moves[0].move.name)
                 audio.src = dados.cries.latest
                 audio.play()
                 erro.innerHTML = ""

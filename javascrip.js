@@ -47,8 +47,8 @@ function gerarPokemon() {
             img.style.height = "141px"
             img.style.width = "153px"
             icon.src = dados.sprites.front_default ? dados.sprites.front_default : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/" + dados.id + ".png"
-            altura.innerHTML = "Altura: 0," + dados.height + "Metros"
-            peso.innerHTML = "Peso: 0," + dados.weight + "Quilos"
+            altura.innerHTML = "Altura: 0," + dados.height + " Metros"
+            peso.innerHTML = "Peso: 0," + dados.weight + " Quilos"
             ataque.innerHTML = "Ataque: " + dados.stats[1].base_stat
             defesa.innerHTML = "Defesa: " + dados.stats[2].base_stat
             velocidade.innerHTML = "Velocidade: " + dados.stats[5].base_stat
@@ -122,8 +122,8 @@ function mudarPokemonFrente() {
                 img.style.height = "141px"
                 img.style.width = "153px"
                 icon.src = dados.sprites.front_default ? dados.sprites.front_default : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/" + dados.id + ".png"
-                altura.innerHTML = "Altura: 0," + dados.height + "Metros"
-                peso.innerHTML = "Peso: 0," + dados.weight + "Quilos"
+                altura.innerHTML = "Altura: 0," + dados.height + " Metros"
+                peso.innerHTML = "Peso: 0," + dados.weight + " Quilos"
                 ataque.innerHTML = "Ataque: " + dados.stats[1].base_stat
                 defesa.innerHTML = "Defesa: " + dados.stats[2].base_stat
                 velocidade.innerHTML = "Velocidade: " + dados.stats[5].base_stat
@@ -199,8 +199,8 @@ function mudarPokemonTras() {
                 img.style.height = "141px"
                 img.style.width = "153px"
                 icon.src = dados.sprites.front_default ? dados.sprites.front_default : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/" + dados.id + ".png"
-                altura.innerHTML = "Altura: 0," + dados.height + "Metros"
-                peso.innerHTML = "Peso: 0," + dados.weight + "Quilos"
+                altura.innerHTML = "Altura: 0," + dados.height + " Metros"
+                peso.innerHTML = "Peso: 0," + dados.weight + " Quilos"
                 ataque.innerHTML = "Ataque: " + dados.stats[1].base_stat
                 defesa.innerHTML = "Defesa: " + dados.stats[2].base_stat
                 velocidade.innerHTML = "Velocidade: " + dados.stats[5].base_stat

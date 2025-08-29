@@ -1,34 +1,39 @@
-var nome = document.getElementById("nome")
-var numeroPokemon = document.getElementById("numeroPokemon")
-var img = document.getElementById("img")
-var tipo1 = document.getElementById("tipo1")
-var tipo2 = document.getElementById("tipo2")
-var altura = document.getElementById("altura")
-var peso = document.getElementById("peso")
-var ataque = document.getElementById("ataque")
-var defesa = document.getElementById("defesa")
-var velocidade = document.getElementById("velocidade")
-var ataqueEspecial = document.getElementById("ataqueEspecial")
-var icon = document.getElementById("icon")
-var propriedades = document.getElementById("propriedades")
-var tela = document.getElementById("tela")
-var audio = document.getElementById("audio")
-var erro = document.getElementById("erro")
+let nome = document.getElementById("nome")
+let numeroPokemon = document.getElementById("numeroPokemon")
+let img = document.getElementById("img")
+let tipo1 = document.getElementById("tipo1")
+let tipo2 = document.getElementById("tipo2")
+let altura = document.getElementById("altura")
+let peso = document.getElementById("peso")
+let ataque = document.getElementById("ataque")
+let defesa = document.getElementById("defesa")
+let velocidade = document.getElementById("velocidade")
+let ataqueEspecial = document.getElementById("ataqueEspecial")
+let icon = document.getElementById("icon")
+let propriedades = document.getElementById("propriedades")
+let tela = document.getElementById("tela")
+let audio = document.getElementById("audio")
+let erro = document.getElementById("erro")
 
-var ir = document.getElementById("ir")
-var voltar = document.getElementById("voltar")
+let ir = document.getElementById("ir")
+let voltar = document.getElementById("voltar")
 
-var pokemon = document.getElementById("pokemon")
-var numero = document.getElementById("numero")
+let pokemon = document.getElementById("pokemon")
+let numero = document.getElementById("numero")
 
-var numeroInicial = 0
+let numeroInicial = 0
 
 function letraMaiuscula(str){
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+    //str.charAt(0) pega o primeiro caracter do nome
+    //.toUpperCase() transforma esse caracter em maiusculo
+    //+ concatena a frase
+    //str.slice(1) pega o resto dos caracteres a partir do 2
+    //.toLowerCase() transforma esses caracteres em minusculo
 }
 
 function gerarPokemon() {
-    var url = "https://pokeapi.co/api/v2/pokemon/" + pokemon.value
+    let url = "https://pokeapi.co/api/v2/pokemon/" + pokemon.value
     fetch(url)
         .then(response => {
             if (!response.ok) { //analisa se o nome e id existem
@@ -98,7 +103,7 @@ pokemon.addEventListener("keypress", function (event) {//adiciona no input caso 
 
 function mudarPokemonFrente() {
     numeroInicial += 1
-    var url = "https://pokeapi.co/api/v2/pokemon/" + numeroInicial
+    let url = "https://pokeapi.co/api/v2/pokemon/" + numeroInicial
     fetch(url)
         .then(response => {
             if (!response.ok) { //analisa se o nome e id existem
@@ -175,7 +180,7 @@ function mudarPokemonFrente() {
 
 function mudarPokemonTras() {
     numeroInicial -= 1
-    var url = "https://pokeapi.co/api/v2/pokemon/" + numeroInicial
+    let url = "https://pokeapi.co/api/v2/pokemon/" + numeroInicial
     fetch(url)
         .then(response => {
             if (!response.ok) { //analisa se o nome e id existem

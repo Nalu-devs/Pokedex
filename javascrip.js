@@ -100,7 +100,7 @@ function gerarPokemon() {
 numero.addEventListener("click", gerarPokemon)//quando o botao for clicado
 
 pokemon.addEventListener("keypress", function (event) {//adiciona no input caso o enter seja apertado
-    if (event.keyCode === 13) {//13 é o codigo da tecla enter
+    if (KeyboardEvent.keyCode === 13) {//13 é o codigo da tecla enter
         gerarPokemon()
     }
 })

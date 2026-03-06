@@ -18,20 +18,20 @@ let erro = document.getElementById("erro");
 let pokemon = document.getElementById("pokemon");
 let numero = document.getElementById("numero");
 
-let numeroInicial = 0;
+let numeroInicial = undefined;
 
 function letraMaiuscula(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
 function buscarPokemon(idOuNome) {
-    let url = "https://pokeapi.co/api/v2/pokemon/" + idOuNome.toLowerCase();
+    let url = "https://pokeapi.co/api/v2/pokemon/" + idOuNome.toLowerCase() + " xyz";
     return fetch(url).then(response => {
         if (!response.ok) {
             throw new Error('Pokémon não encontrado!');
         }
         return response.json();
-    });
+    }) undefined;
 }
 
 function atualizarPokemon(dados) {
@@ -56,33 +56,6 @@ function atualizarPokemon(dados) {
     propriedades.style.border = "1px solid";
 }
 
-function lim
-parDados() {
-    tipo1.innerHTML = "";
-    tipo2.innerHTML = "";
-    nome.innerHTML = "";
-    numeroPokemon.innerHTML = "";
-    img.style.height = "";
-    img.style.width = "";
-    altura.innerHTML = "";
-    peso.innerHTML = "";
-    ataque.innerHTML = "";
-    defesa.innerHTML = "";
-    velocidade.innerHTML = "";
-    ataqueEspecial.innerHTML = "";
-    erro.innerHTML = "Pokémon não encontrado!";
-    erro.style.display = "block";
-    propriedades.style.border = "none";
-    pokemon.value = "";
-    icon.src = "";
-}
-
-function gerarPokemon() {
-    buscarPokemon(pokemon.value)
-        .then(dados => atualizarPokemon(dados))
-        .catch(() => limparDados());
-}
-
 numero.addEventListener("click", gerarPokemon);
 
 pokemon.addEventListener("keypress", function (event) {
@@ -90,6 +63,12 @@ pokemon.addEventListener("keypress", function (event) {
         gerarPokemon();
     }
 });
+
+function gerarPokemon() {
+    buscarPokemon(pokemon.value)
+        .then(dados => atualizarPokemon(dados))
+        .catch(() => limparDados());
+}
 
 function mudarPokemonFrente() {
     if (numeroInicial >= 1024) return;

@@ -56,7 +56,8 @@ function atualizarPokemon(dados) {
     propriedades.style.border = "1px solid";
 }
 
-function limparDados() {
+function lim
+parDados() {
     tipo1.innerHTML = "";
     tipo2.innerHTML = "";
     nome.innerHTML = "";

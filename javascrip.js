@@ -53,8 +53,8 @@ function gerarPokemon() {
             img.src = dados.sprites.other.dream_world.front_default ? dados.sprites.other.dream_world.front_default : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + dados.id + ".png";
             //Se(?) existir dados.sprites.other.dream_world.front_default na API retorna essa imagem, senao(:) busca na API do github junto do id e carrega como png
             
-            img.style.height = "141px"; //altura
-            img.style.width = "153px"; //largura
+            img.style.height = "141px";
+            img.style.width = "153px";
             icon.src = dados.sprites.front_default ? dados.sprites.front_default : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/" + dados.id + ".png";
             altura.innerHTML = "Altura: 0," + dados.height + " Metros";
             peso.innerHTML = "Peso: 0," + dados.weight + " Quilos";

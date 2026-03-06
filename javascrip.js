@@ -32,70 +32,69 @@ function letraMaiuscula(str) {
     //.toLowerCase() transforma esses caracteres em minusculo
 }
 
-function gerarPokemon() {
-    let url = "https://pokeapi.co/api/v2/pokemon/" + pokemon.value
-    fetch(url)
+function buscarPokemon(idOuNome) {
+    let url = "https://pokeapi.co/api/v2/pokemon/" + idOuNome;
+    return fetch(url)
         .then(response => {
-            if (!response.ok) { //analisa se o nome e id existem
-                throw new Error('Pokémon não encontrado!');//caso n exista
+            if (!response.ok) {
+                throw new Error('Pokémon não encontrado!');
             }
-            return response.json();//retorna a funcao
+            return response.json();
+        });
+}
+
+function atualizarPokemon(dados) {
+    numeroInicial = dados.id;
+    tipo1.innerHTML = "Tipo: " + letraMaiuscula(dados.types[0].type.name);
+    tipo2.innerHTML = "Tipo 2: " + letraMaiuscula(dados.types[1] ? dados.types[1].type.name : "Não possui");
+
+    nome.innerHTML = letraMaiuscula(dados.name);
+    numeroPokemon.innerHTML = "Número: " + dados.id;
+    img.src = dados.sprites.other.dream_world.front_default ? dados.sprites.other.dream_world.front_default : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + dados.id + ".png";
+    img.style.height = "141px";
+    img.style.width = "153px";
+    icon.src = dados.sprites.front_default ? dados.sprites.front_default : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/" + dados.id + ".png";
+    altura.innerHTML = "Altura: 0," + dados.height + " Metros";
+    peso.innerHTML = "Peso: 0," + dados.weight + " Quilos";
+    ataque.innerHTML = "Ataque: " + dados.stats[1].base_stat;
+    defesa.innerHTML = "Defesa: " + dados.stats[2].base_stat;
+    velocidade.innerHTML = "Velocidade: " + dados.stats[5].base_stat;
+    ataqueEspecial.innerHTML = "Especial: " + letraMaiuscula(dados.moves[0].move.name);
+    audio.src = dados.cries.latest;
+    audio.play();
+    erro.innerHTML = "";
+    propriedades.style.border = "1px solid";
+}
+
+function limparDados() {
+    tipo1.innerHTML = "";
+    tipo2.innerHTML = "";
+    nome.innerHTML = "";
+    numeroPokemon.innerHTML = "";
+    img.src = "";
+    img.style.height = "";
+    img.style.width = "";
+    altura.innerHTML = "";
+    peso.innerHTML = "";
+    ataque.innerHTML = "";
+    defesa.innerHTML = "";
+    velocidade.innerHTML = "";
+    ataqueEspecial.innerHTML = "";
+    erro.innerHTML = "Pokémon não encontrado!";
+    erro.style.display = "block";
+    propriedades.style.border = "none";
+    pokemon.value = "";
+    icon.src = "";
+}
+
+function gerarPokemon() {
+    buscarPokemon(pokemon.value)
+        .then(dados => {
+            atualizarPokemon(dados);
         })
-        .then((dados) => {
-
-            numeroInicial = dados.id
-            tipo1.innerHTML = "Tipo: " + letraMaiuscula(dados.types[0].type.name);//como tipos é um vetor precisamos declarar qual indice queremos
-            tipo2.innerHTML = "Tipo 2: " + letraMaiuscula(dados.types[1] ? dados.types[1].type.name : "Não possui");
-            //if simples se(?) existir indice 1 em dados.types ele exibe o nome do tipo senao(:) exibe nao possui
-
-            nome.innerHTML = letraMaiuscula(dados.name);
-            numeroPokemon.innerHTML = "Número: " + dados.id;
-            img.src = dados.sprites.other.dream_world.front_default ? dados.sprites.other.dream_world.front_default : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + dados.id + ".png";
-            //Se(?) existir dados.sprites.other.dream_world.front_default na API retorna essa imagem, senao(:) busca na API do github junto do id e carrega como png
-            
-            img.style.height = "141px";
-            img.style.width = "153px";
-            icon.src = dados.sprites.front_default ? dados.sprites.front_default : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/" + dados.id + ".png";
-            altura.innerHTML = "Altura: 0," + dados.height + " Metros";
-            peso.innerHTML = "Peso: 0," + dados.weight + " Quilos";
-            ataque.innerHTML = "Ataque: " + dados.stats[1].base_stat;
-            defesa.innerHTML = "Defesa: " + dados.stats[2].base_stat;
-            velocidade.innerHTML = "Velocidade: " + dados.stats[5].base_stat;
-            ataqueEspecial.innerHTML = "Especial: " + letraMaiuscula(dados.moves[0].move.name);
-            audio.src = dados.cries.latest;
-            audio.play();
-            erro.innerHTML = "";
-
-
-            if (propriedades.style.border = "none") {
-                propriedades.style.border = "1px solid"
-            }
-            else {
-                propriedades.style.border = "none"
-            }
-
-        })
-        .catch(error => {//caso der erro (pokemon não encontrado etc)
-            tipo1.innerHTML = ""
-            tipo2.innerHTML = ""
-            nome.innerHTML = ""
-            numeroPokemon.innerHTML = ""
-            img.src = ""
-            img.style.height = ""
-            img.style.width = ""
-            altura.innerHTML = ""
-            peso.innerHTML = ""
-            ataque.innerHTML = ""
-            defesa.innerHTML = ""
-            velocidade.innerHTML = ""
-            ataqueEspecial.innerHTML = ""
-            erro.innerHTML = "Pokémon não encontrado!"
-            erro.style.display = "block"
-            propriedades.style.border = "none"
-            pokemon.value = ""
-            icon.src = ""
-
-        })
+        .catch(error => {
+            limparDados();
+        });
 }
 numero.addEventListener("click", gerarPokemon)//quando o botao for clicado
 
@@ -106,13 +105,31 @@ pokemon.addEventListener("keypress", function (event) {//adiciona no input caso 
 })
 
 function mudarPokemonFrente() {
-    numeroInicial += 1
-    let url = "https://pokeapi.co/api/v2/pokemon/" + numeroInicial
-    fetch(url)
-        .then(response => {
-            if (!response.ok) { //analisa se o nome e id existem
-                throw new Error('Pokémon não encontrado!');//caso n exista
-            }
+    if (numeroInicial >= 1025) {
+        return;
+    }
+    numeroInicial += 1;
+    pokemon.value = numeroInicial;
+    
+    buscarPokemon(numeroInicial)
+        .then(dados => {
+            atualizarPokemon(dados);
+        })
+        .catch(error => {
+            limparDados();
+        });
+}
+    numeroInicial += 1;
+    pokemon.value = numeroInicial;
+    
+    buscarPokemon(numeroInicial)
+        .then(dados => {
+            atualizarPokemon(dados);
+        })
+        .catch(error => {
+            limparDados();
+        });
+}
             return response.json();//retorna a funcao
         })
         .then((dados) => {
@@ -183,68 +200,17 @@ function mudarPokemonFrente() {
 }
 
 function mudarPokemonTras() {
-    numeroInicial -= 1
-    let url = "https://pokeapi.co/api/v2/pokemon/" + numeroInicial
-    fetch(url)
-        .then(response => {
-            if (!response.ok) { //analisa se o nome e id existem
-                throw new Error('Pokémon não encontrado!');//caso n exista
-
-            }
-            return response.json();//retorna a funcao
+    if (numeroInicial <= 1) {
+        return;
+    }
+    numeroInicial -= 1;
+    pokemon.value = numeroInicial;
+    
+    buscarPokemon(numeroInicial)
+        .then(dados => {
+            atualizarPokemon(dados);
         })
-        .then((dados) => {
-            if (numeroInicial < 0) {
-                return false
-            }//PRECISO ARRUMAR AQUI
-
-            else {
-                pokemon.value = numeroInicial
-                tipo1.innerHTML = "Tipo: " + (letraMaiuscula(dados.types[0].type.name))//como tipos é um vetor precisamos declarar qual indice queremos
-                tipo2.innerHTML = "Tipo 2: " + letraMaiuscula(dados.types[1] ? dados.types[1].type.name : "não possui")
-                nome.innerHTML = (letraMaiuscula(dados.name))
-                numeroPokemon.innerHTML = "Número: " + dados.id
-                img.src = dados.sprites.other.dream_world.front_default ? dados.sprites.other.dream_world.front_default : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + dados.id + ".png"
-                img.style.height = "141px"
-                img.style.width = "153px"
-                icon.src = dados.sprites.front_default ? dados.sprites.front_default : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/" + dados.id + ".png"
-                altura.innerHTML = "Altura: 0," + dados.height + " Metros"
-                peso.innerHTML = "Peso: 0," + dados.weight + " Quilos"
-                ataque.innerHTML = "Ataque: " + dados.stats[1].base_stat
-                defesa.innerHTML = "Defesa: " + dados.stats[2].base_stat
-                velocidade.innerHTML = "Velocidade: " + dados.stats[5].base_stat
-                ataqueEspecial.innerHTML = "Especial: " + letraMaiuscula(dados.moves[0].move.name)
-                audio.src = dados.cries.latest
-                audio.play()
-                erro.innerHTML = ""
-            }
-
-            if (propriedades.style.border = "none") {
-                propriedades.style.border = "1px solid"
-            }
-            else {
-                propriedades.style.border = "none"
-            }
-        })
-        .catch(error => {//caso der erro (pokemon não encontrado etc)
-            tipo1.innerHTML = ""
-            tipo2.innerHTML = ""
-            nome.innerHTML = ""
-            numeroPokemon.innerHTML = ""
-            img.src = ""
-            img.style.height = ""
-            img.style.width = ""
-            altura.innerHTML = ""
-            peso.innerHTML = ""
-            ataque.innerHTML = ""
-            defesa.innerHTML = ""
-            velocidade.innerHTML = ""
-            ataqueEspecial.innerHTML = ""
-            erro.innerHTML = "Pokémon não encontrado!"
-            erro.style.display = "block"
-            propriedades.style.border = "none"
-            pokemon.value = ""
-            icon.src = ""
-        })
-
+        .catch(error => {
+            limparDados();
+        });
 }

@@ -25,7 +25,7 @@ function letraMaiuscula(str) {
 }
 
 function buscarPokemon(idOuNome) {
-    let url = "https://pokeapi.co/api/v2/pokemon/" + idOuNome;
+    let url = "https://pokeapi.co/api/v2/pokemon/" + idOuNome.toLowerCase();
     return fetch(url).then(response => {
         if (!response.ok) {
             throw new Error('Pokémon não encontrado!');
@@ -61,7 +61,6 @@ function limparDados() {
     tipo2.innerHTML = "";
     nome.innerHTML = "";
     numeroPokemon.innerHTML = "";
-    img.src = "";
     img.style.height = "";
     img.style.width = "";
     altura.innerHTML = "";
@@ -92,8 +91,8 @@ pokemon.addEventListener("keypress", function (event) {
 });
 
 function mudarPokemonFrente() {
-    if (numeroInicial >= 1025) return;
-    numeroInicial += 1;
+    if (numeroInicial >= 1024) return;
+    numeroInicial += 2;
     pokemon.value = numeroInicial;
     buscarPokemon(numeroInicial)
         .then(dados => atualizarPokemon(dados))

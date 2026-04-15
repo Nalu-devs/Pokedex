@@ -1,3 +1,8 @@
+#Nome dos desenvolvedores
+    - Ana Lúcia
+    - Larissa
+    - Débora
+
 # Pokédex
 Bem-vindo à Pokédex, um projeto desenvolvido com HTML, CSS e JavaScript puros para explorar e exibir informações detalhadas sobre seus Pokémon favoritos!
 
